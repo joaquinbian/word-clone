@@ -23,8 +23,8 @@ function GuessForm() {
         onChange={onGuessHandler}
         maxLength={5}
         minLength={5}
-        title="loco"
-        pattern="[A-Za-z]{3}"
+        pattern="[a-zA-Z]{5}"
+        title="5 letter word"
       />
     </form>
   );
