@@ -1,7 +1,7 @@
 import React from "react";
 //import "../../styles.css";
 
-function GuessForm({ addGuess }) {
+function GuessForm({ addGuess, disabled }) {
   const [guess, setGuess] = React.useState("");
 
   const onGuessHandler = (e) => {
@@ -19,6 +19,7 @@ function GuessForm({ addGuess }) {
     <form className="guess-input-wrapper" onSubmit={onSubmitGuess}>
       <label htmlFor="guess-input">Enter guess: </label>
       <input
+        disabled={disabled}
         id="guess-input"
         value={guess}
         onChange={onGuessHandler}
