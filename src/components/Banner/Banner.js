@@ -1,7 +1,7 @@
 import React from "react";
 
-function Banner({ hasWon, answer, guesses }) {
-  if (!hasWon) {
+function Banner({ gameStatus, answer, guesses }) {
+  if (gameStatus === "lost") {
     return (
       <div className="sad banner">
         <p>

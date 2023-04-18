@@ -16,35 +16,35 @@ console.info({ answer });
 function Game() {
   const [guesses, setGuesses] = React.useState([]);
   const [results, setResults] = React.useState([]);
-  const [hasWon, setHasWon] = React.useState(undefined);
+  const [gameStatus, setGameStatus] = React.useState("running");
 
   const addGuess = (guess) => {
-    if (NUM_OF_GUESSES_ALLOWED > guesses.length) {
-      setGuesses((oldGuesses) => [...oldGuesses, guess]);
-      const result = checkGuess(guess, answer);
-      setResults((oldResults) => [...oldResults, result]);
+    const nextGuesses = [...guesses, guess];
+    setGuesses(nextGuesses);
+    const result = checkGuess(guess, answer);
+    setResults((oldResults) => [...oldResults, result]);
+    if (guess === answer.toUpperCase()) {
+      setGameStatus("won");
+    } else if (nextGuesses.length === NUM_OF_GUESSES_ALLOWED) {
+      setGameStatus("lost");
     }
   };
 
   const checkGame = (guesses, answer) => {
     if (guesses[guesses.length - 1] === answer) {
-      setHasWon(true);
+      setGameStatus("won");
     } else if (NUM_OF_GUESSES_ALLOWED === guesses.length) {
-      setHasWon(false);
+      setGameStatus("lost");
     }
   };
 
-  React.useEffect(() => {
-    checkGame(guesses, answer);
-  }, [guesses]);
-
   return (
     <>
-      {hasWon !== undefined && (
-        <Banner hasWon={hasWon} answer={answer} guesses={guesses} />
+      {gameStatus !== "running" && (
+        <Banner gameStatus={gameStatus} answer={answer} guesses={guesses} />
       )}
       <Guesses guesses={guesses} results={results} />
-      <GuessForm disabled={hasWon !== undefined} addGuess={addGuess} />
+      <GuessForm disabled={gameStatus !== "running"} addGuess={addGuess} />
     </>
   );
 }
