@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles.css";
+//import "../../styles.css";
 
 function GuessForm() {
   const [guess, setGuess] = React.useState("");
