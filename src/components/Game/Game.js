@@ -30,14 +30,6 @@ function Game() {
     }
   };
 
-  const checkGame = (guesses, answer) => {
-    if (guesses[guesses.length - 1] === answer) {
-      setGameStatus("won");
-    } else if (NUM_OF_GUESSES_ALLOWED === guesses.length) {
-      setGameStatus("lost");
-    }
-  };
-
   return (
     <>
       {gameStatus !== "running" && (
