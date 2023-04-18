@@ -9,7 +9,6 @@ function App() {
 
       <div className="game-wrapper">
         <Game />
-        <GuessForm />
       </div>
     </div>
   );
