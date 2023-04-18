@@ -1,5 +1,4 @@
 import Game from "../Game";
-import GuessForm from "../GuessForm/GuessForm";
 import Header from "../Header";
 
 function App() {
